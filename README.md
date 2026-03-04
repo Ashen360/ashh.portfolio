@@ -1,16 +1,109 @@
-# React + Vite
+# 🌐 Ashen.IT — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, theme-aware developer portfolio built with React, focused on clean architecture, smooth interactions, and intentional design.
 
-Currently, two official plugins are available:
+> “Ambition points to the horizon; passion becomes the road.”
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This portfolio showcases my work as a developer.  
+It emphasizes:
 
-## Expanding the ESLint configuration
+- Clean component architecture
+- Light/Dark theme system
+- Smooth scroll interactions
+- Modern UI principles
+- Reusable custom hooks
+- Scalable structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The goal was to build something that feels premium, minimal, and performance-focused — not just visually impressive, but architecturally sound.
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+- React
+- JavaScript
+- CSS (Custom Properties / Design Tokens)
+
+**Architecture Features**
+- Context API (Theme Management)
+- Custom Hooks
+  - `useTyping`
+  - `useParallax`
+  - `useIntersectionObserver`
+- Component-based folder structure
+- Bento-style layout system
+- Responsive design
+
+---
+
+## 🎨 Features
+
+- 🌗 Light / Dark Mode (Persistent via localStorage)
+- 🎥 Parallax Video Hero Section
+- ⌨️ Typing Animation
+- 🧩 Bento Grid Layout
+- 🖼 Photography Swiper Component
+- 📄 Resume Download Dialog
+- 🔗 External Project Links (Open in new tab)
+- ♻️ Reusable Theme-Aware Icon System
+
+---
+
+## 📂 Project Structure
+
+src/
+│
+├── assets/ # Images, icons, videos
+├── components/ # Reusable UI components
+├── context/ # ThemeContext
+├── hooks/ # Custom hooks
+├── sections/ # Main page sections (Home, About, Projects)
+└── App.jsx
+
+---
+
+## 🧠 Design Philosophy
+
+This portfolio was built with three core principles:
+- Intentional minimalism
+- Performance-first interactions
+- Scalable architecture
+- Every animation, transition, and component exists for a reason.
+
+--- 
+
+## 📸 About Me
+
+I’m a developer who enjoys working at the intersection of design and engineering.
+I focus on building structured, scalable systems while maintaining visual clarity.
+
+When I’m not coding, I enjoy photography and exploring new creative tools.
+
+---
+
+## 📬 Connect With Me
+
+- LinkedIn
+- GitHub
+- Instagram
+- Email
+
+(All available inside the portfolio’s Connect section.)
+
+--- 
+
+## 📄 License
+
+This project is open for inspiration and learning.
+Please do not copy the design directly without modification.
+
+---
+
+## ⭐ If You Like This Project
+
+Consider giving it a star — it helps and is appreciated!
