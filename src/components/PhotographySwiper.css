@@ -1,0 +1,71 @@
+/* Photography Swiper - Card Stack */
+.photography-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-card-deck {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+}
+
+.photo-card {
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 80%; 
+    height: 80%;
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.photo-card:active {
+    cursor: grabbing;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .photo-card {
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .photo-card {
+        border-radius: 12px;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .photography-swiper {
+        min-height: 380px;
+    }
+
+    .swipe-hint {
+        bottom: -40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .photography-swiper {
+        min-height: 320px;
+    }
+
+    .swipe-hint {
+        bottom: -35px;
+    }
+}

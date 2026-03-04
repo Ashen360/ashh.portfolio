@@ -1,0 +1,652 @@
+/* About Section - Bento Grid */
+#about {
+    background: var(--bg);
+    min-height: auto;
+    padding: 6rem 4rem;
+}
+
+.section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Change fixed pixels to auto or fr to allow cards to sync */
+    grid-template-rows: repeat(2, auto) repeat(2, 1fr); 
+    column-gap: 1.5rem;
+    row-gap: 1.5rem; /* Add a consistent gap instead of 0 */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Grid positioning for layout */
+.profile-card {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.about-text-card {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+}
+
+.apps-card {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+}
+
+.photography-card {
+    grid-column: 1 / 3;
+    grid-row: 3 / 5;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+    border: 1px solid var(--border);
+    background: var(--hover-bg);
+    margin-bottom: 1.5rem;
+}
+
+.vinyl-card {
+    grid-column: 3 / 5;
+    grid-row: 3 / 4;
+    height: 277.99px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 24px rgba(37,99,235,0.10);
+    position: relative;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.connect-card {
+    grid-column: 3 / 5;
+    grid-row: 4 / 5;
+    height: 277.99px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Divider between vinyl and connect cards - hidden */
+.bento-divider {
+    display: none;
+}
+
+.bento-card {
+    background: var(--hover-bg);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .bento-card {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.bento-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Profile Image Card */
+.profile-card {
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    cursor: pointer;
+}
+
+[data-theme="light"] .profile-card {
+    background: linear-gradient(135deg, #f5f5f3 0%, #e5e5e5 100%);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-card:hover .profile-image {
+    transform: scale(1.05);
+}
+
+.profile-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(37, 99, 235, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.profile-card:hover .profile-overlay {
+    opacity: 1;
+}
+
+/* About Text Card */
+.about-text-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-text-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.about-text-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+/* Photography Card - Swiper Setup with Stacked Cards Effect */
+.photography-card {
+    grid-column: 1 / 3;
+    grid-row: 3 / 5;
+    padding: 0;
+    position: relative;
+    overflow: hidden; /* Changed from visible to contain the swiper */
+    min-height: 520px; /* Essential for Swiper to calculate height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Apps Scroll Card */
+.apps-card {
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.apps-scroll {
+    display: flex;
+    gap: 1.5rem;
+    animation: scroll-infinite 20s linear infinite;
+}
+
+.apps-scroll:hover {
+    animation-play-state: paused;
+}
+
+.app-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: var(--bg);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.app-icon:hover {
+    transform: translateY(-4px) scale(1.1);
+    border-color: var(--accent);
+}
+
+.app-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Vinyl Visualizer Card */
+.vinyl-card {
+    height: auto;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.vinyl-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    width: 100%;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 20%;
+    z-index: 3;
+}
+
+.track-title {
+    font-size: 1.4rem;
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.track-artist {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.album-container {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vinyl-disc-container {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+}
+
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+        #1a1a1a 0%,
+        #1a1a1a 22%,
+        #00a6a4 22%,
+        #04bf8a 23%,
+        #1a1a1a 23%,
+        #1a1a1a 100%
+    );
+    position: relative;
+    animation: vinyl-spin 6s linear infinite;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] .vinyl-disc {
+    background: radial-gradient(circle at center,
+        #1a1a1a 0%,
+        #1a1a1a 22%,
+        #00a6a4 22%,
+        #04bf8a 23%,
+        #1a1a1a 23%,
+        #1a1a1a 100%
+    );
+}
+
+.vinyl-disc::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #2a2a2a, #0a0a0a);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="light"] .vinyl-disc::before {
+    background: radial-gradient(circle at 30% 30%, #f5f5f5, #a0a0a0);
+}
+
+.vinyl-disc::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0.03) 0deg,
+        rgba(255, 255, 255, 0.03) 2deg,
+        transparent 2deg,
+        transparent 4deg
+    );
+}
+
+.vinyl-grooves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle at center,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.3) 2px,
+        rgba(0, 0, 0, 0.3) 3px
+    );
+    pointer-events: none;
+}
+
+[data-theme="light"] .vinyl-grooves {
+    background: repeating-radial-gradient(
+        circle at center,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 3px
+    );
+}
+
+@keyframes vinyl-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Connect Card Styling */
+.connect-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    background: var(--bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.social-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    color: var(--bg);
+}
+
+.social-link img {
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+
+.resume-button {
+    padding: 0.87rem 1.75rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: auto;
+}
+
+.resume-button:hover {
+    background: var(--accent);
+    filter: brightness(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+}
+
+.resume-button:active {
+    transform: translateY(-1px);
+}
+
+.resume-button img {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    #about {
+        padding: 6rem 2rem;
+    }
+
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto auto auto auto auto;
+    }
+
+    .profile-card {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+    }
+
+    .about-text-card {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+
+    .apps-card {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+    }
+
+    .photography-card {
+        grid-column: 1 / 3;
+        grid-row: 5 / 6;
+    }
+
+    .vinyl-card {
+        grid-column: 1 / 3;
+        grid-row: 6 / 7;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        border-radius: 24px;
+    }
+
+    .vinyl-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .track-info {
+        writing-mode: horizontal-tb;
+        transform: none;
+        text-align: center;
+        gap: 10px;
+        position: static;
+        padding-top: 0;
+    }
+
+    .album-cover {
+        width: 180px;
+        height: 180px;
+    }
+
+    .vinyl-disc-container {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 180px;
+        height: 180px;
+        margin-left: -90px;
+    }
+
+    .vinyl-disc {
+        width: 160px;
+        height: 160px;
+    }
+
+    .connect-card {
+        grid-column: 1 / 3;
+        grid-row: 7 / 8;
+        border-radius: 24px;
+    }
+
+    .app-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .app-icon img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .social-links {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+
+    .vinyl-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .vinyl-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .track-info {
+        writing-mode: horizontal-tb;
+        transform: none;
+        text-align: center;
+        gap: 8px;
+        position: static;
+        padding-top: 0;
+    }
+
+    .track-title {
+        font-size: 1.3rem;
+    }
+
+    .track-artist {
+        font-size: 1rem;
+    }
+
+    .album-cover {
+        width: 150px;
+        height: 150px;
+    }
+
+    .vinyl-disc-container {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 150px;
+        height: 150px;
+        margin-left: -75px;
+    }
+}
