@@ -54,19 +54,6 @@ The goal was to build something that feels premium, minimal, and performance-foc
 
 ---
 
-## 📂 Project Structure
-
-src/
-│
-├── assets/ # Images, icons, videos
-├── components/ # Reusable UI components
-├── context/ # ThemeContext
-├── hooks/ # Custom hooks
-├── sections/ # Main page sections (Home, About, Projects)
-└── App.jsx
-
----
-
 ## 🧠 Design Philosophy
 
 This portfolio was built with three core principles:
