@@ -1,24 +1,25 @@
 import './Home.css'
 import { useTyping } from '../../hooks/useTyping';
 import { useParallax } from '../../hooks/useParallax';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 
 import trainVideo from '../../assets/Vids/Train-Rolling.mp4'; 
 
 export default function Home() {
   const typingText = useTyping();
-  const { ref: videoRef, offset } = useParallax(0.5);
+  const { ref: parallaxRef, offset } = useParallax(0.5);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef?.current) {
       videoRef.current.playbackRate = 0.5;
     }
-  }, [videoRef]);
+  }, []);
 
   return (
     <section id="home">
-      <div className="home-video-container">
+      <div className="home-video-container" ref={parallaxRef}>
         <div className="video-overlay"></div>
         <video 
           ref={videoRef}
@@ -26,6 +27,7 @@ export default function Home() {
           muted 
           loop 
           playsInline 
+          preload="metadata"
           className="home-video"
           style={{
             transform: `translateY(${offset * 0.3}px)`,

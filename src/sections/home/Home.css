@@ -23,7 +23,8 @@
     z-index: 0;
     opacity: 0.4;
     filter: brightness(0.9);
-    animation: videoFadeInOut 1s ease-in-out infinite;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .video-overlay {
@@ -170,20 +171,6 @@
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes videoFadeInOut {
-    0% { 
-        opacity: 0.2;
-    }
-    5% { 
-        opacity: 0.4;
-    }
-    95% {
-        opacity: 0.4;
-    }
-    100% {
-        opacity: 0.2;
-    }
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {

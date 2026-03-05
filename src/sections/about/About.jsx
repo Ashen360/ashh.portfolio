@@ -1,10 +1,11 @@
 import "./About.css";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import PhotographySwiper from "../../components/PhotographySwiper";
 import ResumeDialog from "../../components/ResumeDialog";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { useContext } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
+import { useThemeImage } from "../../hooks/useThemeImage";
 
 import profileImg from "../../assets/Images/sully-me.jpg";
 
@@ -29,6 +30,30 @@ import instagramLight from "../../assets/Icons/instagram-light.svg";
 
 import albumImage from "../../assets/Images/album-smithereens.gif";
 
+// Memoized app icon component
+const AppIcon = memo(({ app, imageSrc }) => (
+  <div className="app-icon" title={app.title}>
+    <img src={imageSrc} alt={app.title} loading="lazy" />
+  </div>
+));
+
+AppIcon.displayName = "AppIcon";
+
+// Memoized social link component
+const SocialLink = memo(({ link, imageSrc }) => (
+  <a
+    href={link.href}
+    className="social-link"
+    target={link.title !== "Gmail" ? "_blank" : undefined}
+    title={link.title}
+    rel="noopener noreferrer"
+  >
+    <img src={imageSrc} alt={link.title} loading="lazy" />
+  </a>
+));
+
+SocialLink.displayName = "SocialLink";
+
 export default function About() {
   const { theme } = useContext(ThemeContext);
 
@@ -50,14 +75,12 @@ export default function About() {
     { src: officeLogo, title: "Microsoft Office" },
     { src: figmaLogo, title: "Figma" },
     {
-      src: chatgptLogoDark,
       light: chatgptLogoLight,
       dark: chatgptLogoDark,
       title: "ChatGPT",
     },
     { src: claudeLogo, title: "Claude" },
     {
-      src: githubLogoDark,
       light: githubLogoLight,
       dark: githubLogoDark,
       title: "GitHub",
@@ -98,6 +121,9 @@ export default function About() {
       title: "Instagram",
     },
   ];
+
+  // Get theme-aware image sources
+  const albumImageSrc = albumImage;
 
   return (
     <section id="about">
@@ -140,36 +166,20 @@ export default function About() {
           >
             <h2 className="section-title">Apps I love using!</h2>
             <div className="apps-scroll">
-              {/* First set */}
-              {apps.map((app, idx) => (
-                <div key={idx} className="app-icon" title={app.title}>
-                  <img
-                    src={
-                      app.light
-                        ? theme === "light"
-                          ? app.light
-                          : app.dark
-                        : app.src
-                    }
-                    alt={app.title}
+              {apps.map((app, idx) => {
+                const imageSrc = app.light
+                  ? theme === "light"
+                    ? app.light
+                    : app.dark
+                  : app.src;
+                return (
+                  <AppIcon
+                    key={idx}
+                    app={app}
+                    imageSrc={imageSrc}
                   />
-                </div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {apps.map((app, idx) => (
-                <div key={`dup-${idx}`} className="app-icon" title={app.title}>
-                  <img
-                    src={
-                      app.light
-                        ? theme === "light"
-                          ? app.light
-                          : app.dark
-                        : app.src
-                    }
-                    alt={app.title}
-                  />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -214,21 +224,16 @@ export default function About() {
           >
             <h3>Connect with me</h3>
             <div className="social-links">
-              {socialLinks.map((link, idx) => (
-                <a
-                  key={idx}
-                  href={link.href}
-                  className="social-link"
-                  target={link.title !== "Gmail" ? "_blank" : undefined}
-                  title={link.title}
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={theme === "light" ? link.light : link.dark}
-                    alt={link.title}
+              {socialLinks.map((link, idx) => {
+                const imageSrc = theme === "light" ? link.light : link.dark;
+                return (
+                  <SocialLink
+                    key={idx}
+                    link={link}
+                    imageSrc={imageSrc}
                   />
-                </a>
-              ))}
+                );
+              })}
             </div>
             {/* Resume Download Dialog Component */}
             <ResumeDialog />

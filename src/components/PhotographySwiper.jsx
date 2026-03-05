@@ -1,38 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSprings, animated, to as interpolate } from '@react-spring/web';
 import { useDrag } from 'react-use-gesture';
 import './PhotographySwiper.css';
 
-import lookingahead from '../assets/Images/lookingahead.jpg';
-import busPic from '../assets/Images/bus-pic.jpg';
-import busPicStairs from '../assets/Images/bus-pic-stairs.jpg';
-import cityHorizon from '../assets/Images/cityhorizon.jpg';
-import doggo from '../assets/Images/doggo.jpg';
-import burgerJoint from '../assets/Images/burgerjoint.jpg';
-import expensiveMelody from '../assets/Images/expensivemelody.jpg';
-import urbanScene from '../assets/Images/urbanscene.jpg';
-import sunsetCar from '../assets/Images/sunset-car.jpg';
-import squidFood from '../assets/Images/squidfood.jpg';
-import museumMe from '../assets/Images/museum-me.jpg';
-import orangeCat from '../assets/Images/orangecat.jpg';
-import flower from '../assets/Images/flower.jpg';
-import pinkBlueSky from '../assets/Images/pinkbluesky.jpg';
-
-const photos = [
-  lookingahead,
-  busPic,
-  busPicStairs,
-  cityHorizon,
-  doggo,
-  burgerJoint,
-  expensiveMelody,
-  urbanScene,
-  sunsetCar,
-  squidFood,
-  museumMe,
-  orangeCat,
-  flower,
-  pinkBlueSky,
+const photoData = [
+  'lookingahead.jpg',
+  'bus-pic.jpg',
+  'bus-pic-stairs.jpg',
+  'cityhorizon.jpg',
+  'doggo.jpg',
+  'burgerjoint.jpg',
+  'expensivemelody.jpg',
+  'urbanscene.jpg',
+  'sunset-car.jpg',
+  'squidfood.jpg',
+  'museum-me.jpg',
+  'orangecat.jpg',
+  'flower.jpg',
+  'pinkbluesky.jpg',
 ];
 
 const to = (i) => ({
@@ -49,11 +34,30 @@ const trans = (r, s) =>
   `rotateZ(${r}deg) scale(${s})`;
 
 export default function PhotographySwiper() {
+  const [photos, setPhotos] = useState([]);
   const [gone] = useState(() => new Set());
-  const [props, api] = useSprings(photos.length, (i) => ({
+  const [props, api] = useSprings(photoData.length, (i) => ({
     ...to(i),
     from: from(),
   }));
+  const preloadedImagesRef = useRef({});
+
+  useEffect(() => {
+    // Preload images dynamically
+    const loadImages = async () => {
+      const loadedPhotos = [];
+      
+      for (const photo of photoData) {
+        const path = new URL(`../assets/Images/${photo}`, import.meta.url).href;
+        loadedPhotos.push(path);
+        preloadedImagesRef.current[photo] = path;
+      }
+      
+      setPhotos(loadedPhotos);
+    };
+
+    loadImages();
+  }, []);
 
   const bind = useDrag(
     ({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
@@ -80,7 +84,7 @@ export default function PhotographySwiper() {
         };
       });
 
-      if (!down && gone.size === photos.length) {
+      if (!down && gone.size === photoData.length) {
         setTimeout(() => {
           gone.clear();
           api.start((i) => to(i));
@@ -88,6 +92,11 @@ export default function PhotographySwiper() {
       }
     }
   );
+
+  // Return early if images not loaded yet
+  if (photos.length === 0) {
+    return <div className="photography-swiper"></div>;
+  }
 
   return (
     <div className="photography-swiper">

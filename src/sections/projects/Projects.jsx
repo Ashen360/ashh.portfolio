@@ -53,7 +53,7 @@ export default function Projects() {
               className={`project-card ${project.visible ? "visible" : ""}`}
             >
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} loading="lazy" />
               </div>
               <div className="project-info">
                 <div className="project-number">{project.number}</div>

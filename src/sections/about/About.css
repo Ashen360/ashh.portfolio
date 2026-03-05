@@ -113,11 +113,12 @@
     overflow: hidden;
     opacity: 0;
     transform: translateY(30px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    will-change: transform, opacity;
 }
 
 [data-theme="light"] .bento-card {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .bento-card.visible {
@@ -127,7 +128,7 @@
 
 .bento-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     border-color: rgba(37, 99, 235, 0.3);
 }
 
@@ -147,6 +148,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .profile-card:hover .profile-image {
@@ -208,11 +210,7 @@
 .apps-scroll {
     display: flex;
     gap: 1.5rem;
-    animation: scroll-infinite 20s linear infinite;
-}
-
-.apps-scroll:hover {
-    animation-play-state: paused;
+    will-change: contents;
 }
 
 .app-icon {
@@ -225,13 +223,12 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease;
     border: 1px solid var(--border);
     position: relative;
 }
 
 .app-icon:hover {
-    transform: translateY(-4px) scale(1.1);
     border-color: var(--accent);
 }
 
@@ -239,15 +236,6 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
-}
-
-@keyframes scroll-infinite {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
 }
 
 /* Vinyl Visualizer Card */
@@ -344,6 +332,9 @@
     position: relative;
     animation: vinyl-spin 6s linear infinite;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 [data-theme="light"] .vinyl-disc {
@@ -457,13 +448,13 @@
     transition: all 0.3s ease;
     border: 1px solid var(--border);
     flex-shrink: 0;
+    will-change: background, border-color;
 }
 
 .social-link:hover {
     background: var(--accent);
     border-color: var(--accent);
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    transform: translateY(-6px);
     color: var(--bg);
 }
 
