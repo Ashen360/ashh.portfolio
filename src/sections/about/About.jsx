@@ -122,10 +122,10 @@ export default function About() {
           >
             <h3>Myself, Described</h3>
             <p>
-              I'm a creative technologist who thrives at the intersection of
-              design and development. With a passion for crafting meaningful
-              digital experiences, I approach every project with curiosity and
-              attention to detail.
+              I'm enjoy turning ideas into interactive experiences through code. 
+              My work focuses on crafting websites and applications that are both intuitive and meaningful
+              for the people who use them. I approach projects with curiosity and a strong attention to detail
+              that makes products feel polished and complete
             </p>
             <p>
               When I'm not immersed in code, you'll find me capturing moments

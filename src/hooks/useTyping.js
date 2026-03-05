@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useTyping(phrases = ['Developer', 'Designer', 'Creator']) {
+export function useTyping(phrases = ['Developer', 'Photographer', 'Tech Geek', 'Future Pilot']) {
   const [displayText, setDisplayText] = useState('');
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
