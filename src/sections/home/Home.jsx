@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import trainVideo from '../../assets/Vids/Train-Rolling.mp4'; 
 
 export default function Home() {
-  const typingText = useTyping(['Developer', 'Designer', 'Creator']);
+  const typingText = useTyping();
   const { ref: videoRef, offset } = useParallax(0.5);
 
   useEffect(() => {
