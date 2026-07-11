@@ -148,7 +148,7 @@ export default function About() {
           >
             <h3>Myself, Described</h3>
             <p>
-              I'm enjoy turning ideas into interactive experiences through code. 
+              I enjoy turning ideas into interactive experiences through code. 
               My work focuses on crafting websites and applications that are both intuitive and meaningful
               for the people who use them. I approach projects with curiosity and a strong attention to detail
               that makes products feel polished and complete
