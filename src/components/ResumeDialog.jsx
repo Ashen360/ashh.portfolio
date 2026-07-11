@@ -1,69 +1,49 @@
 import "./ResumeDialog.css";
-import { useState, useEffect, useContext } from "react";
-import { createPortal } from "react-dom";
+import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
+import { createPortal } from "react-dom";
 
 import downloadIconDark from "../assets/Icons/download-dark.svg";
 import downloadIconLight from "../assets/Icons/download-light.svg";
+import resumePDF from "../assets/resume/KurtRussel-Baybay-CV-latest.pdf";
 
 export default function ResumeDialog() {
-
   const { theme } = useContext(ThemeContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  // Handle Escape key to close modal
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener("keydown", handleEscape);
-    }
-
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen]);
-
-  // Lock scroll when modal is open
-  useEffect(() => {
-    if (isOpen) {
+    if (showModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
+    return () => { document.body.style.overflow = "auto"; };
+  }, [showModal]);
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
-  // Handle Escape key
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        setIsOpen(false);
-      }
+      if (e.key === "Escape") setShowModal(false);
     };
-
-    if (isOpen) {
+    if (showModal) {
       window.addEventListener("keydown", handleEscape);
     }
-
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen]);
+  }, [showModal]);
 
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      setIsOpen(false);
-    }
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = resumePDF;
+    link.download = "KurtRussel-Baybay-CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setShowModal(false);
   };
 
   return (
     <>
-      {/* Resume Button */}
-      <button className="resume-button" onClick={() => setIsOpen(true)}>
+      <button className="resume-button" onClick={() => setShowModal(true)}>
         <img
           src={theme === "light" ? downloadIconDark : downloadIconLight}
           alt="Download"
@@ -71,37 +51,20 @@ export default function ResumeDialog() {
         Download Resume
       </button>
 
-      {/* Global Modal via Portal */}
-      {isOpen &&
-        createPortal(
-          <div className="download-dialog" onClick={handleOverlayClick}>
-            <div className="dialog-overlay"></div>
-
-            <div className="dialog-content">
-              <h3>Resume Currently Being Updated</h3>
-
-              <p>
-                I'm currently redesigning and refining my resume to better
-                reflect my latest projects and technical growth.
-              </p>
-
-              <p>
-                If you'd like a copy in the meantime, feel free to reach out
-                through the contact section — I’d be happy to share it directly.
-              </p>
-
-              <div className="dialog-actions">
-                <button
-                  className="dialog-button confirm"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Got it
-                </button>
-              </div>
+      {showModal && createPortal(
+        <div className="download-dialog" onClick={(e) => { if (e.target === e.currentTarget) setShowModal(false); }}>
+          <div className="dialog-overlay"></div>
+          <div className="dialog-content">
+            <h3>Download Resume</h3>
+            <p>Would you like to download my resume?</p>
+            <div className="dialog-actions">
+              <button className="dialog-button cancel" onClick={() => setShowModal(false)}>Cancel</button>
+              <button className="dialog-button confirm" onClick={handleDownload}>Download</button>
             </div>
-          </div>,
-          document.body,
-        )}
+          </div>
+        </div>,
+        document.body
+      )}
     </>
   );
 }

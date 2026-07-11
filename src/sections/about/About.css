@@ -210,7 +210,13 @@
 .apps-scroll {
     display: flex;
     gap: 1.5rem;
-    will-change: contents;
+    animation: apps-scroll 30s linear infinite;
+    width: fit-content;
+}
+
+@keyframes apps-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .app-icon {

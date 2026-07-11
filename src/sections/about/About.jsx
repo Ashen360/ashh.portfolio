@@ -91,7 +91,7 @@ export default function About() {
 
   const socialLinks = [
     {
-      href: "https://www.linkedin.com/in/kurtrusselbaybay/",
+      href: "https://www.linkedin.com/in/kurt-baybay/",
       light: linkedinLight,
       dark: linkedinDark,
       title: "LinkedIn",
@@ -166,7 +166,7 @@ export default function About() {
           >
             <h2 className="section-title">Apps I love using!</h2>
             <div className="apps-scroll">
-              {apps.map((app, idx) => {
+              {[...apps, ...apps].map((app, idx) => {
                 const imageSrc = app.light
                   ? theme === "light"
                     ? app.light
