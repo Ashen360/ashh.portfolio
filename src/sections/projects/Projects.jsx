@@ -90,6 +90,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
+        <h2 className="section-title projects-footer">Always shipping something new.</h2>
       </div>
     </section>
   );

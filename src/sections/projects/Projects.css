@@ -166,6 +166,13 @@
     height: 16px;
 }
 
+.projects-footer {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 4rem;
+    margin-bottom: 0;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     #projects {
