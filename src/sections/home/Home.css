@@ -37,6 +37,10 @@
     z-index: 1;
 }
 
+[data-theme="light"] .video-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
 #home > .container,
 #home > .scroll-indicator {
     position: relative;
@@ -126,6 +130,18 @@
     opacity: 0;
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
     letter-spacing: -0.01em;
+}
+
+/* Light mode overrides for hero section */
+[data-theme="light"] .hero-label,
+[data-theme="light"] .hero-title .subtle,
+[data-theme="light"] .hero-subtitle,
+[data-theme="light"] .hero-cta {
+    color: #FAFAF8;
+}
+
+[data-theme="light"] .hero-title .highlight {
+    color: #2563EB;
 }
 
 .hero-cta:hover {
