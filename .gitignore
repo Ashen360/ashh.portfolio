@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private working notes and agent context: never publish
+docs/
+HANDOFF*.md
+SEED*.md
+PROGRESS*.md
+TODO*.md
+CODEBASE.md
+CLAUDE.md
+.claude/
+
+# Static design mockup, not part of the site
+projects-section.html
