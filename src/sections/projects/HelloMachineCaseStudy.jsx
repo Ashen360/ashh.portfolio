@@ -2,19 +2,19 @@ import "./EditorialCaseStudy.css";
 import { useEffect, useState } from "react";
 import { useCaseStudyFonts } from "../../hooks/useCaseStudyFonts";
 
-import introImg from "../../assets/projects/build/00-intro.webp";
-import cardImg from "../../assets/projects/build/01-card.webp";
-import valvesImg from "../../assets/projects/build/02-valves.webp";
-import ladderImg from "../../assets/projects/build/03-ladder.webp";
-import basicImg from "../../assets/projects/build/04-basic.webp";
-import webImg from "../../assets/projects/build/05-web.webp";
-import denseImg from "../../assets/projects/build/06-dense.webp";
-import tokensImg from "../../assets/projects/build/07-tokens.webp";
-import finalImg from "../../assets/projects/build/08-final.webp";
-import phoneCardImg from "../../assets/projects/build/m01.webp";
-import phoneValvesImg from "../../assets/projects/build/m02.webp";
-import phoneBasicImg from "../../assets/projects/build/m04.webp";
-import phoneTokensImg from "../../assets/projects/build/m07.webp";
+import introImg from "../../assets/projects/hello-machine/00-intro.webp";
+import cardImg from "../../assets/projects/hello-machine/01-card.webp";
+import valvesImg from "../../assets/projects/hello-machine/02-valves.webp";
+import ladderImg from "../../assets/projects/hello-machine/03-ladder.webp";
+import basicImg from "../../assets/projects/hello-machine/04-basic.webp";
+import webImg from "../../assets/projects/hello-machine/05-web.webp";
+import denseImg from "../../assets/projects/hello-machine/06-dense.webp";
+import tokensImg from "../../assets/projects/hello-machine/07-tokens.webp";
+import finalImg from "../../assets/projects/hello-machine/08-final.webp";
+import phoneCardImg from "../../assets/projects/hello-machine/m01.webp";
+import phoneValvesImg from "../../assets/projects/hello-machine/m02.webp";
+import phoneBasicImg from "../../assets/projects/hello-machine/m04.webp";
+import phoneTokensImg from "../../assets/projects/hello-machine/m07.webp";
 
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400&display=swap";
@@ -281,8 +281,8 @@ function FinaleDemo() {
   );
 }
 
-export default function BuildCaseStudy({ cs }) {
-  useCaseStudyFonts("build-fonts", FONT_HREF);
+export default function HelloMachineCaseStudy({ cs }) {
+  useCaseStudyFonts("hello-machine-fonts", FONT_HREF);
   const typed = useTypedLine(OPENING);
 
   return (
@@ -302,7 +302,7 @@ export default function BuildCaseStudy({ cs }) {
         <div className="ecs-deck">
           <div className="ecs-deck-copy">
             <p className="ecs-say">
-              BUILD tells the story of programming as the story of people learning to talk to machines. Every chapter is made from the medium of its era: you turn a punched card that spells a greeting, set a byte with vacuum tubes, program a working BASIC prompt and fly through a 3D web. Then the site hands you the keyboard.
+              Hello, Machine tells the story of programming as the story of people learning to talk to machines. Every chapter is made from the medium of its era: you turn a punched card that spells a greeting, set a byte with vacuum tubes, program a working BASIC prompt and fly through a 3D web. Then the site hands you the keyboard.
             </p>
             {cs.link && (
               <a className="ecs-cta" href={cs.link} target="_blank" rel="noopener noreferrer">
@@ -352,10 +352,10 @@ export default function BuildCaseStudy({ cs }) {
         <div className="ecs-two">
           <div className="ecs-stack">
             <p className="ecs-say">
-              The site opens on a black screen and types two words: <code>HELLO, MACHINE.</code> That greeting is the whole story. Every chapter after it repeats the sentence in the language of its time.
+              The site opens on a black screen and types two words: <code>HELLO, MACHINE.</code> That greeting is the whole story, and the project’s name. Every chapter after it repeats the sentence in the language of its time.
             </p>
             <p className="ecs-prose">
-              A history of programming could easily become a timeline of inventions. BUILD holds together because every interaction is the same act: <strong>a person saying something to a machine</strong>. The punch card spells the greeting in holes, the valves spell its first letter in bits, and the finale asks what you would say.
+              A history of programming could easily become a timeline of inventions. The site holds together because every interaction is the same act: <strong>a person saying something to a machine</strong>. The punch card spells the greeting in holes, the valves spell its first letter in bits, and the finale asks what you would say.
             </p>
           </div>
           <blockquote className="ecs-pull">
@@ -405,7 +405,7 @@ export default function BuildCaseStudy({ cs }) {
             <h3 id="ecs-eras-h" className="ecs-h2">The verb changes with the century.</h3>
           </div>
           <p className="ecs-prose">
-            A timeline could have reused one component and swapped the content. BUILD changes what your hands do in each chapter, and the palette changes with it: as each section takes over the screen, the whole page crossfades to that era's colours in 900 milliseconds.
+            A timeline could have reused one component and swapped the content. Hello, Machine changes what your hands do in each chapter, and the palette changes with it: as each section takes over the screen, the whole page crossfades to that era's colours in 900 milliseconds.
           </p>
         </div>
 

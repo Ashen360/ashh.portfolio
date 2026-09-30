@@ -1,7 +1,7 @@
 {
   "capturedAt": "2026-09-30T18:00:52.077Z",
   "repos": [
-    "BUILD",
+    "hello-machine",
     "ashh.portfolio",
     "sandbox"
   ],
@@ -10,41 +10,41 @@
       "sha": "134955f762a843adcacaebdaddce104c11bbbeb9",
       "message": "Refresh contributors",
       "date": "2026-09-30T17:24:49Z",
-      "url": "https://github.com/Ashen360/BUILD/commit/134955f762a843adcacaebdaddce104c11bbbeb9",
-      "repo": "BUILD",
-      "repoUrl": "https://github.com/Ashen360/BUILD"
+      "url": "https://github.com/Ashen360/hello-machine/commit/134955f762a843adcacaebdaddce104c11bbbeb9",
+      "repo": "hello-machine",
+      "repoUrl": "https://github.com/Ashen360/hello-machine"
     },
     {
       "sha": "03399508be4dd36ae60e134aafac8a4611533804",
       "message": "Give the era label a backdrop on phones",
       "date": "2026-09-30T17:08:14Z",
-      "url": "https://github.com/Ashen360/BUILD/commit/03399508be4dd36ae60e134aafac8a4611533804",
-      "repo": "BUILD",
-      "repoUrl": "https://github.com/Ashen360/BUILD"
+      "url": "https://github.com/Ashen360/hello-machine/commit/03399508be4dd36ae60e134aafac8a4611533804",
+      "repo": "hello-machine",
+      "repoUrl": "https://github.com/Ashen360/hello-machine"
     },
     {
       "sha": "06f1c61ce96f86928cec24c9bfedcdc555d59548",
       "message": "Prepare for GitHub Pages: README, share image, meta tags",
       "date": "2026-09-30T16:58:50Z",
-      "url": "https://github.com/Ashen360/BUILD/commit/06f1c61ce96f86928cec24c9bfedcdc555d59548",
-      "repo": "BUILD",
-      "repoUrl": "https://github.com/Ashen360/BUILD"
+      "url": "https://github.com/Ashen360/hello-machine/commit/06f1c61ce96f86928cec24c9bfedcdc555d59548",
+      "repo": "hello-machine",
+      "repoUrl": "https://github.com/Ashen360/hello-machine"
     },
     {
       "sha": "d192bb2df55174d7934d8b910305204398f48d9f",
       "message": "Fix five issues and remodel UI around the HELLO thread",
       "date": "2026-09-30T16:55:26Z",
-      "url": "https://github.com/Ashen360/BUILD/commit/d192bb2df55174d7934d8b910305204398f48d9f",
-      "repo": "BUILD",
-      "repoUrl": "https://github.com/Ashen360/BUILD"
+      "url": "https://github.com/Ashen360/hello-machine/commit/d192bb2df55174d7934d8b910305204398f48d9f",
+      "repo": "hello-machine",
+      "repoUrl": "https://github.com/Ashen360/hello-machine"
     },
     {
       "sha": "911ba0266cfb7586bfc0fde45e495ed80a840f82",
       "message": "Baseline: BUILD site before fixes and remodel",
       "date": "2026-09-30T16:46:24Z",
-      "url": "https://github.com/Ashen360/BUILD/commit/911ba0266cfb7586bfc0fde45e495ed80a840f82",
-      "repo": "BUILD",
-      "repoUrl": "https://github.com/Ashen360/BUILD"
+      "url": "https://github.com/Ashen360/hello-machine/commit/911ba0266cfb7586bfc0fde45e495ed80a840f82",
+      "repo": "hello-machine",
+      "repoUrl": "https://github.com/Ashen360/hello-machine"
     },
     {
       "sha": "44dee26528dcbf957265f3b0ee83cd2e43a923b3",
