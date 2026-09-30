@@ -1,0 +1,214 @@
+.loader {
+    --ls-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ls-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --ls-pad: clamp(20px, 4vw, 48px);
+    --ls-glow: 18%;
+    --ls-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow: hidden;
+    color: var(--text);
+    font-family: var(--ls-sans);
+}
+
+[data-theme="light"] .loader {
+    --ls-glow: 7%;
+}
+
+.ls-shutters {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--ls-shutters), 1fr);
+}
+
+.ls-shutter {
+    width: calc(100% + 1px);
+    height: 100%;
+    background-color: var(--bg);
+    background-image: var(--ls-grain);
+    will-change: transform;
+}
+
+.ls-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(45% 40% at 50% 48%, color-mix(in srgb, var(--accent) var(--ls-glow), transparent), transparent 72%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ls-content {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: var(--ls-pad);
+}
+
+.ls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.ls-row-bottom {
+    align-items: flex-end;
+}
+
+.ls-meta,
+.ls-status {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.ls-center {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ls-lockup {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.ls-brand {
+    display: flex;
+    font-family: var(--ls-serif);
+    font-weight: 400;
+    font-size: clamp(4rem, 13vw, 9.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.ls-mask {
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.08em 0.05em 0.14em;
+    margin: -0.08em -0.05em -0.14em;
+}
+
+.ls-rise {
+    display: inline-block;
+    transform: translateY(110%);
+    will-change: transform;
+}
+
+.ls-accent {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.ls-track {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    margin-top: clamp(14px, 2vw, 24px);
+    background: var(--border);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.ls-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.ls-fade {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.ls-quote {
+    margin-top: clamp(18px, 2.5vw, 28px);
+    max-width: 34ch;
+    font-family: var(--ls-serif);
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-secondary);
+    filter: blur(6px);
+}
+
+.ls-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 0.4em;
+}
+
+.ls-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: ls-pulse 1.6s ease-in-out infinite;
+}
+
+.ls-count {
+    display: flex;
+    align-items: flex-start;
+    font-family: var(--ls-serif);
+    line-height: 0.85;
+}
+
+.ls-count-value {
+    min-width: 3ch;
+    text-align: right;
+    font-size: clamp(3.25rem, 9vw, 7.5rem);
+    font-variant-numeric: tabular-nums;
+}
+
+.ls-count-unit {
+    margin: 0.35em 0 0 0.35em;
+    font-family: var(--ls-sans);
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+    color: var(--text-secondary);
+}
+
+@keyframes ls-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.35;
+        transform: scale(0.7);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ls-content {
+        opacity: 0;
+    }
+
+    .ls-rise,
+    .ls-fade {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    .ls-track {
+        transform: none;
+    }
+
+    .ls-glow {
+        opacity: 1;
+    }
+
+    .ls-dot {
+        animation: none;
+    }
+}

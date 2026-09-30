@@ -1,20 +1,85 @@
 import './Navbar.css'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../components/ThemeContext';
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    const handleSectionChange = () => {
+      const sections = ['home', 'about', 'projects'];
+      let currentSection = 'home';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          const scroll = window.scrollY;
+
+          if (scroll >= top - 100 && scroll < top + height - 100) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleSectionChange);
+    
+    // Initial call
+    handleSectionChange();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleSectionChange);
+    };
+  }, []);
 
   return (
-    <nav id="navbar">
+    <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
       <div className="logo">Ashen.IT</div>
       <ul className="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li>
+          <a 
+            href="#home" 
+            className={activeSection === 'home' ? 'active' : ''}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#about" 
+            className={activeSection === 'about' ? 'active' : ''}
+          >
+            About
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#projects" 
+            className={activeSection === 'projects' ? 'active' : ''}
+          >
+            Projects
+          </a>
+        </li>
       </ul>
       <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-        <svg className="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+<svg className="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
           <line x1="12" y1="21" x2="12" y2="23"></line>
