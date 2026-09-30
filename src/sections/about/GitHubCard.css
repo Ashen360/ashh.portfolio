@@ -1,0 +1,206 @@
+.github-card {
+    grid-column: 1 / 5;
+    grid-row: 5 / 6;
+}
+
+.gh-card-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+    gap: 2.5rem;
+    height: 100%;
+}
+
+.gh-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    min-width: 0;
+}
+
+.gh-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.gh-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+}
+
+.gh-dot.live {
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.gh-title {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-top: 0.75rem;
+}
+
+.gh-sub {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.gh-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 56px;
+}
+
+.gh-bars i {
+    flex: 1;
+    min-height: 3px;
+    border-radius: 2px;
+    background: var(--border);
+}
+
+.gh-bars i.on {
+    background: var(--accent);
+}
+
+.gh-bars-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+.gh-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+}
+
+.gh-profile:hover {
+    gap: 0.75rem;
+}
+
+.gh-profile svg {
+    width: 16px;
+    height: 16px;
+}
+
+.gh-list {
+    list-style: none;
+    min-width: 0;
+    align-self: center;
+}
+
+.gh-list li {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.gh-list li:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.gh-sha {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.gh-sha:hover {
+    text-decoration: underline;
+}
+
+.gh-msg {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    min-width: 0;
+}
+
+.gh-msg-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.gh-repo {
+    flex: none;
+    padding: 0.1rem 0.6rem;
+    border: 1px solid color-mix(in srgb, var(--text-secondary) 30%, transparent);
+    border-radius: 20px;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.gh-repo:hover {
+    color: var(--text);
+    border-color: var(--text-secondary);
+}
+
+.gh-time {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.gh-card-inner a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+    .github-card {
+        grid-column: 1 / 3;
+        grid-row: 8 / 9;
+    }
+
+    .gh-card-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .gh-list li {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.25rem 0.75rem;
+    }
+
+    .gh-sha {
+        grid-column: 1 / -1;
+    }
+
+    .gh-msg {
+        flex-wrap: wrap;
+    }
+
+    .gh-msg-text {
+        white-space: normal;
+    }
+}

@@ -2,6 +2,7 @@ import "./About.css";
 import { useRef, memo } from "react";
 import PhotographySwiper from "../../components/PhotographySwiper";
 import ResumeDialog from "../../components/ResumeDialog";
+import GitHubCard from "./GitHubCard";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { useContext } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
@@ -63,6 +64,7 @@ export default function About() {
   const photoRef = useRef(null);
   const vinylRef = useRef(null);
   const connectRef = useRef(null);
+  const githubRef = useRef(null);
 
   const profileVisible = useIntersectionObserver(profileRef);
   const textVisible = useIntersectionObserver(textRef);
@@ -70,6 +72,7 @@ export default function About() {
   const photoVisible = useIntersectionObserver(photoRef);
   const vinylVisible = useIntersectionObserver(vinylRef);
   const connectVisible = useIntersectionObserver(connectRef);
+  const githubVisible = useIntersectionObserver(githubRef);
 
   const apps = [
     { src: officeLogo, title: "Microsoft Office" },
@@ -237,6 +240,13 @@ export default function About() {
             </div>
             {/* Resume Download Dialog Component */}
             <ResumeDialog />
+          </div>
+
+          <div
+            ref={githubRef}
+            className={`bento-card github-card ${githubVisible ? "visible" : ""}`}
+          >
+            <GitHubCard active={githubVisible} />
           </div>
         </div>
       </div>

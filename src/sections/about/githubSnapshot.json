@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-09-30T18:00:52.077Z",
+  "repos": [
+    "BUILD",
+    "ashh.portfolio",
+    "sandbox"
+  ],
+  "commits": [
+    {
+      "sha": "134955f762a843adcacaebdaddce104c11bbbeb9",
+      "message": "Refresh contributors",
+      "date": "2026-09-30T17:24:49Z",
+      "url": "https://github.com/Ashen360/BUILD/commit/134955f762a843adcacaebdaddce104c11bbbeb9",
+      "repo": "BUILD",
+      "repoUrl": "https://github.com/Ashen360/BUILD"
+    },
+    {
+      "sha": "03399508be4dd36ae60e134aafac8a4611533804",
+      "message": "Give the era label a backdrop on phones",
+      "date": "2026-09-30T17:08:14Z",
+      "url": "https://github.com/Ashen360/BUILD/commit/03399508be4dd36ae60e134aafac8a4611533804",
+      "repo": "BUILD",
+      "repoUrl": "https://github.com/Ashen360/BUILD"
+    },
+    {
+      "sha": "06f1c61ce96f86928cec24c9bfedcdc555d59548",
+      "message": "Prepare for GitHub Pages: README, share image, meta tags",
+      "date": "2026-09-30T16:58:50Z",
+      "url": "https://github.com/Ashen360/BUILD/commit/06f1c61ce96f86928cec24c9bfedcdc555d59548",
+      "repo": "BUILD",
+      "repoUrl": "https://github.com/Ashen360/BUILD"
+    },
+    {
+      "sha": "d192bb2df55174d7934d8b910305204398f48d9f",
+      "message": "Fix five issues and remodel UI around the HELLO thread",
+      "date": "2026-09-30T16:55:26Z",
+      "url": "https://github.com/Ashen360/BUILD/commit/d192bb2df55174d7934d8b910305204398f48d9f",
+      "repo": "BUILD",
+      "repoUrl": "https://github.com/Ashen360/BUILD"
+    },
+    {
+      "sha": "911ba0266cfb7586bfc0fde45e495ed80a840f82",
+      "message": "Baseline: BUILD site before fixes and remodel",
+      "date": "2026-09-30T16:46:24Z",
+      "url": "https://github.com/Ashen360/BUILD/commit/911ba0266cfb7586bfc0fde45e495ed80a840f82",
+      "repo": "BUILD",
+      "repoUrl": "https://github.com/Ashen360/BUILD"
+    },
+    {
+      "sha": "44dee26528dcbf957265f3b0ee83cd2e43a923b3",
+      "message": "add footer phrase below projects, fix resume dialog with confirmation modal, fix vinyl track text layout, fix apps infinite scroll",
+      "date": "2026-07-26T01:53:03Z",
+      "url": "https://github.com/Ashen360/ashh.portfolio/commit/44dee26528dcbf957265f3b0ee83cd2e43a923b3",
+      "repo": "ashh.portfolio",
+      "repoUrl": "https://github.com/Ashen360/ashh.portfolio"
+    },
+    {
+      "sha": "92692384846420f0e766602627685b8679e1e098",
+      "message": "docs: add root README for sandbox monorepo",
+      "date": "2026-07-20T13:31:51Z",
+      "url": "https://github.com/Ashen360/sandbox/commit/92692384846420f0e766602627685b8679e1e098",
+      "repo": "sandbox",
+      "repoUrl": "https://github.com/Ashen360/sandbox"
+    },
+    {
+      "sha": "d7a40dea6fc6286a44870522892c42902a4df469",
+      "message": "feat: add palworld-xgp-import (fixed fork) as first mini-project",
+      "date": "2026-07-20T13:30:12Z",
+      "url": "https://github.com/Ashen360/sandbox/commit/d7a40dea6fc6286a44870522892c42902a4df469",
+      "repo": "sandbox",
+      "repoUrl": "https://github.com/Ashen360/sandbox"
+    },
+    {
+      "sha": "e6b134066654dc92724fed0a65fe832abf1006da",
+      "message": "fix infinite scroll animation and resume modal",
+      "date": "2026-07-11T16:53:31Z",
+      "url": "https://github.com/Ashen360/ashh.portfolio/commit/e6b134066654dc92724fed0a65fe832abf1006da",
+      "repo": "ashh.portfolio",
+      "repoUrl": "https://github.com/Ashen360/ashh.portfolio"
+    },
+    {
+      "sha": "7a508ccd823da1a9866feb75907fdc2fcdfb9f34",
+      "message": "fix: make track title display horizontally",
+      "date": "2026-07-11T16:42:54Z",
+      "url": "https://github.com/Ashen360/ashh.portfolio/commit/7a508ccd823da1a9866feb75907fdc2fcdfb9f34",
+      "repo": "ashh.portfolio",
+      "repoUrl": "https://github.com/Ashen360/ashh.portfolio"
+    }
+  ]
+}
