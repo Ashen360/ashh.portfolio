@@ -4,9 +4,9 @@ import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { createPortal } from "react-dom";
 
-import downloadIconDark from "../assets/Icons/download-dark.svg";
-import downloadIconLight from "../assets/Icons/download-light.svg";
-import resumePDF from "../assets/resume/KurtRussel-Baybay-CV-latest.pdf";
+import downloadIconDark from "../assets/icons/download-dark.svg";
+import downloadIconLight from "../assets/icons/download-light.svg";
+import resumePDF from "../assets/resume/KurtRussel-Baybay-Resume.pdf";
 
 export default function ResumeDialog() {
   const { theme } = useContext(ThemeContext);

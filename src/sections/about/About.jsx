@@ -8,28 +8,28 @@ import { useContext } from "react";
 import { ThemeContext } from "../../components/ThemeContext";
 import { useThemeImage } from "../../hooks/useThemeImage";
 
-import profileImg from "../../assets/Images/sully-me.jpg";
+import profileImg from "../../assets/photos/sully-me.webp";
 
-import officeLogo from "../../assets/Icons/office-logo.svg";
-import figmaLogo from "../../assets/Icons/figma-logo.svg";
-import chatgptLogoDark from "../../assets/Icons/chatgpt-logo-dark.svg";
-import chatgptLogoLight from "../../assets/Icons/chatgpt-logo-light.svg";
-import claudeLogo from "../../assets/Icons/claude-logo.svg";
-import githubLogoDark from "../../assets/Icons/github-logo-dark.svg";
-import githubLogoLight from "../../assets/Icons/github-logo-light.svg";
-import canvaIcon from "../../assets/Icons/canva-icon.svg";
-import spotifyLogo from "../../assets/Icons/spotify-logo.svg";
+import officeLogo from "../../assets/icons/office-logo.svg";
+import figmaLogo from "../../assets/icons/figma-logo.svg";
+import chatgptLogoDark from "../../assets/icons/chatgpt-logo-dark.svg";
+import chatgptLogoLight from "../../assets/icons/chatgpt-logo-light.svg";
+import claudeLogo from "../../assets/icons/claude-logo.svg";
+import githubLogoDark from "../../assets/icons/github-logo-dark.svg";
+import githubLogoLight from "../../assets/icons/github-logo-light.svg";
+import canvaIcon from "../../assets/icons/canva-icon.svg";
+import spotifyLogo from "../../assets/icons/spotify-logo.svg";
 
-import linkedinDark from "../../assets/Icons/linkedin-dark.svg";
-import linkedinLight from "../../assets/Icons/linkedin-light.svg";
-import facebookDark from "../../assets/Icons/facebook-dark.svg";
-import facebookLight from "../../assets/Icons/facebook-light.svg";
-import gmailDark from "../../assets/Icons/gmail-dark.svg";
-import gmailLight from "../../assets/Icons/gmail-light.svg";
-import instagramDark from "../../assets/Icons/instagram-dark.svg";
-import instagramLight from "../../assets/Icons/instagram-light.svg";
+import linkedinDark from "../../assets/icons/linkedin-dark.svg";
+import linkedinLight from "../../assets/icons/linkedin-light.svg";
+import facebookDark from "../../assets/icons/facebook-dark.svg";
+import facebookLight from "../../assets/icons/facebook-light.svg";
+import gmailDark from "../../assets/icons/gmail-dark.svg";
+import gmailLight from "../../assets/icons/gmail-light.svg";
+import instagramDark from "../../assets/icons/instagram-dark.svg";
+import instagramLight from "../../assets/icons/instagram-light.svg";
 
-import albumImage from "../../assets/Images/album-smithereens.gif";
+import albumImage from "../../assets/photos/album-smithereens.webp";
 
 // Memoized app icon component
 const AppIcon = memo(({ app, imageSrc }) => (
@@ -140,7 +140,7 @@ export default function About() {
             ref={profileRef}
             className={`bento-card profile-card ${profileVisible ? "visible" : ""}`}
           >
-            <img src={profileImg} alt="Profile" className="profile-image" />
+            <img src={profileImg} alt="Profile" className="profile-image" decoding="async" />
             <div className="profile-overlay"></div>
           </div>
 
@@ -191,7 +191,7 @@ export default function About() {
             ref={photoRef}
             className={`bento-card photography-card ${photoVisible ? "visible" : ""}`}
           >
-            <PhotographySwiper />
+            <PhotographySwiper active={photoVisible} />
           </div>
 
           {/* Vinyl Visualizer Card */}

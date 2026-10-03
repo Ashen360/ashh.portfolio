@@ -4,7 +4,8 @@ import { useParallax } from '../../hooks/useParallax';
 import { useEffect, useRef } from 'react';
 
 
-import trainVideo from '../../assets/Vids/Train-Rolling.mp4'; 
+import trainVideo from '../../assets/video/Train-Rolling.mp4';
+import heroPoster from '../../assets/video/hero-poster.webp';
 
 export default function Home() {
   const typingText = useTyping();
@@ -28,6 +29,7 @@ export default function Home() {
           loop 
           playsInline 
           preload="metadata"
+          poster={heroPoster}
           className="home-video"
           style={{
             transform: `translateY(${offset * 0.3}px)`,

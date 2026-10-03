@@ -1,0 +1,209 @@
+<!doctype html>
+<!--
+  Resume source. Export to PDF (from the repo root):
+  "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --no-pdf-header-footer --print-to-pdf="src/assets/resume/KurtRussel-Baybay-Resume.pdf" "file:///<repo>/resume/resume.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kurt Russel Baybay - Resume</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #111827;
+    --muted: #4B5563;
+    --accent: #002168;
+    --rule: #D9D8D4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #fff; }
+  body {
+    width: 210mm; height: 297mm; overflow: hidden;
+    padding: 11mm 15mm 10mm;
+    font-family: 'Manrope', sans-serif;
+    font-size: 8.8pt; line-height: 1.38; color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Header */
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8mm; }
+  h1 {
+    font-family: 'Instrument Serif', serif; font-weight: 400;
+    font-size: 31pt; line-height: 1; letter-spacing: -0.2pt;
+  }
+  .headline {
+    margin-top: 2.2mm; font-size: 10.5pt; font-weight: 600; color: var(--accent);
+  }
+  .contact {
+    margin-top: 3mm; display: grid; grid-template-columns: auto auto; gap: 0.7mm 7mm;
+    font-size: 8.4pt; color: var(--muted); justify-content: start;
+  }
+  .photo {
+    width: 24mm; height: 24mm; border-radius: 3mm; object-fit: cover; flex: none;
+    filter: grayscale(0.15);
+  }
+
+  /* Sections */
+  section { margin-top: 3.3mm; }
+  h2 {
+    font-size: 7.6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); padding-bottom: 1.2mm; border-bottom: 0.5pt solid var(--rule);
+    margin-bottom: 2.2mm;
+  }
+  .summary { font-size: 9.2pt; }
+
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .item + .item { margin-top: 2.4mm; }
+  .item h3 { font-size: 9.6pt; font-weight: 700; }
+  .item h3 .sep { color: var(--muted); font-weight: 400; }
+  .item h3 .role { font-weight: 500; color: var(--muted); }
+  .meta { font-size: 8.2pt; color: var(--muted); white-space: nowrap; }
+  .stack { font-size: 8.2pt; color: var(--accent); font-weight: 500; margin-top: 0.3mm; }
+  ul { list-style: none; margin-top: 0.9mm; }
+  li { position: relative; padding-left: 3.4mm; }
+  li + li { margin-top: 0.5mm; }
+  li::before { content: ""; position: absolute; left: 0.4mm; top: 0.52em; width: 1.1mm; height: 1.1mm; background: var(--accent); border-radius: 50%; }
+  .also { margin-top: 2.9mm; font-size: 8.6pt; color: var(--muted); }
+  .also b { color: var(--ink); font-weight: 600; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: 27mm 1fr; gap: 0.9mm 3mm; }
+  .skills dt { font-weight: 600; }
+  .skills dd { color: var(--ink); }
+
+  /* Education / awards */
+  .edu .item + .item { margin-top: 1.2mm; }
+  .edu .item h3 { font-size: 9.2pt; }
+  .edu .detail { color: var(--muted); font-size: 8.6pt; }
+  .awards li + li { margin-top: 0.8mm; }
+  .awards .src { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Kurt Russel Hije Baybay</h1>
+    <div class="headline">Web Developer &amp; Software Engineer</div>
+    <div class="contact">
+      <span>Marikina City, Philippines</span>
+      <a href="mailto:developer.ashen.it@gmail.com">developer.ashen.it@gmail.com</a>
+      <span>+63 976 309 0126</span>
+      <a href="https://github.com/Ashen360">github.com/Ashen360</a>
+      <a href="https://ashens-web.netlify.app/">ashens-web.netlify.app</a>
+      <a href="https://linkedin.com/in/kurt-baybay">linkedin.com/in/kurt-baybay</a>
+    </div>
+  </div>
+  <img class="photo" src="photo.png" alt="Kurt Russel Baybay">
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p class="summary">
+    Information Technology student who builds interactive web applications with React and TypeScript, with additional work in Flutter, Java and C++.
+    Has shipped four live projects, including a webcam hand-tracking browser console and an interactive history of programming,
+    and built a no-code content management feature for a client web platform.
+  </p>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="item">
+    <div class="row">
+      <h3>Webii <span class="sep">/</span> <span class="role">Hand-tracking browser console</span></h3>
+      <span class="meta"><a href="https://ashen360.github.io/Webii/">ashen360.github.io/Webii</a></span>
+    </div>
+    <div class="stack">TypeScript · MediaPipe · Canvas 2D · Web Audio · Vite · Vitest</div>
+    <ul>
+      <li>Built a browser console controlled by webcam: the index finger moves the cursor and a pinch acts as a click, with all tracking running locally in the browser.</li>
+      <li>Designed calibration into onboarding, and shipped three Canvas 2D games and three themes.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="row">
+      <h3>Hello, Machine <span class="sep">/</span> <span class="role">Interactive history of programming</span></h3>
+      <span class="meta"><a href="https://ashen360.github.io/hello-machine/">ashen360.github.io/hello-machine</a></span>
+    </div>
+    <div class="stack">HTML · CSS · JavaScript · Three.js · Canvas</div>
+    <ul>
+      <li>Created a scrollytelling essay of seven chapters and a finale, 1837 to LLMs, each built from its era's medium: a punched card that spells HELLO, valves that set a byte, and a working BASIC terminal.</li>
+      <li>Re-themes the whole page per era, with accessibility considered throughout. Written without a build step.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="row">
+      <h3>Cucina De Marquina CMS <span class="sep">/</span> <span class="role">Versatily web ecosystem</span></h3>
+      <span class="meta">2024</span>
+    </div>
+    <div class="stack">React · Express.js</div>
+    <ul>
+      <li>Developed a content management feature that lets users create, edit and publish reviews through a no-code interface.</li>
+      <li>Work as researcher and developer earned two SHS Expo section awards.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="row">
+      <h3>WordWeaver <span class="sep">/</span> <span class="role">Category word puzzle</span></h3>
+      <span class="meta"><a href="https://ashen360.github.io/WordWeaver/">ashen360.github.io/WordWeaver</a></span>
+    </div>
+    <div class="stack">React · GitHub Pages</div>
+    <ul>
+      <li>Built a puzzle game where players find groups of four related words in a shuffled grid, with difficulty levels from everyday topics to computer science concepts.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="row">
+      <h3>EasyRead <span class="sep">/</span> <span class="role">Dyslexia support app</span></h3>
+      <span class="meta">Android</span>
+    </div>
+    <div class="stack">Flutter · Dart</div>
+    <ul>
+      <li>Developed a mobile app that runs locally and uses AI assistance to give students with dyslexia real-time text simplification, explanations and summaries.</li>
+    </ul>
+  </div>
+
+  <p class="also"><b>Also built:</b> Sining Filipino, an interactive timeline of Philippine art (HTML, CSS, JavaScript) · Vremia, an Android scheduling and reminders app (Java) · Transactsys, a C++ console shop with cart and .txt receipts</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd>JavaScript, TypeScript, Python, Java, C#, C++, Dart</dd>
+    <dt>Web &amp; Mobile</dt><dd>React, Next.js, Express.js, HTML, CSS, Three.js, MediaPipe, Flutter</dd>
+    <dt>Databases</dt><dd>MySQL, MongoDB, Supabase</dd>
+    <dt>Tools</dt><dd>Git, GitHub, Vite, Vitest, Vercel, VS Code, Visual Studio</dd>
+  </dl>
+</section>
+
+<section class="edu">
+  <h2>Education</h2>
+  <div class="item">
+    <div class="row"><h3>FEU Roosevelt Marikina <span class="sep">/</span> <span class="role">BS Information Technology</span></h3><span class="meta">2025 – Present</span></div>
+  </div>
+  <div class="item">
+    <div class="row"><h3>Technological Institute of the Philippines, Quezon City <span class="sep">/</span> <span class="role">BS Information Technology</span></h3><span class="meta">2024 – 2025</span></div>
+  </div>
+  <div class="item">
+    <div class="row"><h3>STI College Marikina <span class="sep">/</span> <span class="role">SHS, Information Technology (Mobile App and Web Dev)</span></h3><span class="meta">2022 – 2024</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Awards</h2>
+  <ul class="awards">
+    <li>Top 10 Finalist, Innov8 Ideathon by Microsoft Student Community <span class="src">· TIP Manila, 2024</span></li>
+    <li>Best in Communication and Best Use of Expo Theme, SHS Expo <span class="src">· STI College Marikina, 2024</span></li>
+    <li>2nd Runner-up, Codefest Tagisan ng Talino <span class="src">· 2023</span></li>
+    <li>3rd Place, Interdepartmental General Information and Current Events Quiz Bee <span class="src">· TIP Quezon City</span></li>
+  </ul>
+</section>
+
+</body>
+</html>

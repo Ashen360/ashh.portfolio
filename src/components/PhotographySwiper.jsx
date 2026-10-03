@@ -4,20 +4,20 @@ import { useDrag } from 'react-use-gesture';
 import './PhotographySwiper.css';
 
 const photoData = [
-  'lookingahead.jpg',
-  'bus-pic.jpg',
-  'bus-pic-stairs.jpg',
-  'cityhorizon.jpg',
-  'doggo.jpg',
-  'burgerjoint.jpg',
-  'expensivemelody.jpg',
-  'urbanscene.jpg',
-  'sunset-car.jpg',
-  'squidfood.jpg',
-  'museum-me.jpg',
-  'orangecat.jpg',
-  'flower.jpg',
-  'pinkbluesky.jpg',
+  'lookingahead.webp',
+  'bus-pic.webp',
+  'bus-pic-stairs.webp',
+  'cityhorizon.webp',
+  'doggo.webp',
+  'burgerjoint.webp',
+  'expensivemelody.webp',
+  'urbanscene.webp',
+  'sunset-car.webp',
+  'squidfood.webp',
+  'museum-me.webp',
+  'orangecat.webp',
+  'flower.webp',
+  'pinkbluesky.webp',
 ];
 
 const to = (i) => ({
@@ -33,7 +33,7 @@ const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 const trans = (r, s) =>
   `rotateZ(${r}deg) scale(${s})`;
 
-export default function PhotographySwiper() {
+export default function PhotographySwiper({ active = true }) {
   const [photos, setPhotos] = useState([]);
   const [gone] = useState(() => new Set());
   const [props, api] = useSprings(photoData.length, (i) => ({
@@ -43,12 +43,13 @@ export default function PhotographySwiper() {
   const preloadedImagesRef = useRef({});
 
   useEffect(() => {
-    // Preload images dynamically
+    // Wait until the card scrolls into view before fetching any photos
+    if (!active) return;
     const loadImages = async () => {
       const loadedPhotos = [];
       
       for (const photo of photoData) {
-        const path = new URL(`../assets/Images/${photo}`, import.meta.url).href;
+        const path = new URL(`../assets/photos/${photo}`, import.meta.url).href;
         loadedPhotos.push(path);
         preloadedImagesRef.current[photo] = path;
       }
@@ -57,7 +58,7 @@ export default function PhotographySwiper() {
     };
 
     loadImages();
-  }, []);
+  }, [active]);
 
   const bind = useDrag(
     ({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {

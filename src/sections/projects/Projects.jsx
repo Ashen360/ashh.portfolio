@@ -5,8 +5,8 @@ import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import HelloMachineCaseStudy from "./HelloMachineCaseStudy";
 import WebiiCaseStudy from "./WebiiCaseStudy";
 
-import project1Img from "../../assets/projects/wordweaver.jpg";
-import project2Img from "../../assets/projects/siningfilipino.jpg";
+import project1Img from "../../assets/projects/wordweaver/cover.jpg";
+import project2Img from "../../assets/projects/sining-filipino/cover.jpg";
 import helloMachineImg from "../../assets/projects/hello-machine/01-card.webp";
 import webiiImg from "../../assets/projects/webii/menu.webp";
 

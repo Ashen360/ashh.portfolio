@@ -50,6 +50,7 @@ function LoadingScreen({ onReveal, onComplete }) {
 
     const finish = () => {
       document.body.style.overflow = '';
+      onRevealRef.current();
       onCompleteRef.current();
     };
 
