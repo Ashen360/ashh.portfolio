@@ -4,8 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, ImageRun, ExternalHyperlink, Table, TableRow, TableCell,
-  WidthType, BorderStyle, AlignmentType, LevelFormat, PositionalTabAlignment,
-  PositionalTabRelativeTo, PositionalTabLeader, TabStopType,
+  WidthType, BorderStyle, AlignmentType, LevelFormat, TabStopType,
 } = require("docx");
 
 const INK = "111827", MUTED = "4B5563", ACCENT = "002168", RULE = "D9D8D4";
@@ -17,16 +16,12 @@ const run = (text, o = {}) => new TextRun({ text, font: BODY, size: 18, color: I
 const link = (text, url, o = {}) =>
   new ExternalHyperlink({ link: url, children: [run(text, { color: MUTED, ...o })] });
 
-const rightTab = () =>
-  new TextRun({ children: [new (require("docx").PositionalTab)({
-    alignment: PositionalTabAlignment.RIGHT,
-    relativeTo: PositionalTabRelativeTo.MARGIN,
-    leader: PositionalTabLeader.NONE,
-  })] });
+const rightTab = () => run("	");
+const RIGHT_STOP = [{ type: TabStopType.RIGHT, position: CONTENT_W }];
 
 const heading = (text) =>
   new Paragraph({
-    spacing: { before: 190, after: 90 },
+    spacing: { before: 200, after: 100 },
     border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: RULE, space: 2 } },
     keepNext: true,
     children: [run(text.toUpperCase(), { bold: true, size: 15, color: ACCENT, characterSpacing: 30 })],
@@ -36,6 +31,7 @@ const titleLine = (title, role, right) =>
   new Paragraph({
     spacing: { before: 110, after: 0 },
     keepNext: true,
+    tabStops: RIGHT_STOP,
     children: [
       run(title, { bold: true, size: 19 }),
       ...(role ? [run(" / ", { color: MUTED }), run(role, { color: MUTED })] : []),
@@ -73,7 +69,7 @@ const header = new Table({
       width: { size: CONTENT_W - 1500, type: WidthType.DXA }, borders: noBorders,
       margins: { top: 0, bottom: 0, left: 0, right: 0 },
       children: [
-        new Paragraph({ spacing: { after: 40 }, children: [new TextRun({ text: "Kurt Russel Hije Baybay", font: SERIF, size: 56, color: INK })] }),
+        new Paragraph({ spacing: { after: 40 }, children: [new TextRun({ text: "Kurt Russel H. Baybay", font: SERIF, size: 56, color: INK })] }),
         new Paragraph({ spacing: { after: 90 }, children: [run("Web Developer & Software Engineer", { bold: true, size: 21, color: ACCENT })] }),
         contactLine({ t: "Marikina City, Philippines" }, link("developer.ashen.it@gmail.com", "mailto:developer.ashen.it@gmail.com", { size: 17 })),
         contactLine({ t: "+63 976 309 0126" }, link("github.com/Ashen360", "https://github.com/Ashen360", { size: 17 })),
@@ -114,8 +110,7 @@ const children = [
       "Re-themes the whole page per era, with accessibility considered throughout. Written without a build step.",
     ]),
   ...proj("Cucina De Marquina CMS", "Versatily web ecosystem", "2024", "React · Express.js", [
-    "Developed a content management feature that lets users create, edit and publish reviews through a no-code interface.",
-    "Work as researcher and developer earned two SHS Expo section awards.",
+    "Developed a content management feature that lets users create, edit and publish reviews through a no-code interface. Work as researcher and developer earned two SHS Expo section awards.",
   ]),
   ...proj("WordWeaver", "Category word puzzle", L("ashen360.github.io/WordWeaver", "https://ashen360.github.io/WordWeaver/"),
     "React · GitHub Pages", [
@@ -136,7 +131,7 @@ const children = [
     ["Databases", "MySQL, MongoDB, Supabase"],
     ["Tools", "Git, GitHub, Vite, Vitest, Vercel, VS Code, Visual Studio"],
   ].map(([k, v]) => new Paragraph({
-    spacing: { after: 20 }, tabStops: [{ type: TabStopType.LEFT, position: 1500 }],
+    spacing: { after: 50 }, tabStops: [{ type: TabStopType.LEFT, position: 1500 }],
     children: [run(k, { bold: true }), run("\t"), run(v)],
   })),
 
@@ -145,7 +140,7 @@ const children = [
     ["FEU Roosevelt Marikina", "BS Information Technology", "2025 – Present"],
     ["Technological Institute of the Philippines, Quezon City", "BS Information Technology", "2024 – 2025"],
     ["STI College Marikina", "SHS, Information Technology (Mobile App and Web Dev)", "2022 – 2024"],
-  ].map(([s, d, y]) => new Paragraph({ spacing: { after: 30 }, children: [
+  ].map(([s, d, y]) => new Paragraph({ spacing: { after: 70 }, tabStops: RIGHT_STOP, children: [
     run(s, { bold: true, size: 19 }), run(" / ", { color: MUTED }), run(d, { color: MUTED }), rightTab(), run(y, { size: 16, color: MUTED }),
   ] })),
 
@@ -155,7 +150,7 @@ const children = [
     ["Best in Communication and Best Use of Expo Theme, SHS Expo", "STI College Marikina, 2024"],
     ["2nd Runner-up, Codefest Tagisan ng Talino", "2023"],
     ["3rd Place, Interdepartmental General Information and Current Events Quiz Bee", "TIP Quezon City"],
-  ].map(([a, s]) => new Paragraph({ numbering: { reference: "bul", level: 0 }, spacing: { after: 30 }, children: [
+  ].map(([a, s]) => new Paragraph({ spacing: { after: 70 }, children: [
     run(a), run(" · " + s, { color: MUTED }),
   ] })),
 ];
@@ -163,7 +158,7 @@ const children = [
 const doc = new Document({
   creator: "Kurt Russel Baybay",
   title: "Kurt Russel Baybay - Resume",
-  styles: { default: { document: { run: { font: BODY, size: 18 } } } },
+  styles: { default: { document: { run: { font: BODY, size: 18 }, paragraph: { spacing: { before: 0, after: 0, line: 252, lineRule: "auto" } } } } },
   numbering: { config: [{ reference: "bul", levels: [{
     level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT,
     style: { paragraph: { indent: { left: 200, hanging: 200 } }, run: { color: ACCENT } },
