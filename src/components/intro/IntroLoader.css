@@ -1,0 +1,193 @@
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro[data-phase="play"],
+.intro[data-phase="reveal"] {
+    background: transparent;
+}
+
+.intro[data-phase="reveal"] {
+    pointer-events: none;
+}
+
+.intro[data-phase="out"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+}
+
+.intro[data-phase="play"] .intro-canvas,
+.intro[data-phase="reveal"] .intro-canvas {
+    opacity: 1;
+}
+
+.intro-gate {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 16px;
+    text-align: center;
+    background: radial-gradient(45% 40% at 50% 48%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 72%);
+    animation: intro-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-theme="light"] .intro-gate {
+    background: radial-gradient(45% 40% at 50% 48%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 72%);
+}
+
+.intro-eyebrow {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.intro-eyebrow i {
+    color: var(--accent);
+}
+
+.intro-note {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.intro .intro-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 44px;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro .intro-btn-primary {
+    color: #FAFAF8;
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px #2563eb59;
+}
+
+.intro .intro-btn-primary:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 22px #2563eb73;
+}
+
+.intro .intro-btn-ghost:hover {
+    border-color: var(--text-secondary);
+    background: var(--hover-bg);
+}
+
+.intro .intro-btn:focus-visible,
+.intro .intro-mute:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.intro .intro-mute {
+    position: absolute;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    cursor: pointer;
+    animation: intro-fade 0.5s ease-out both;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro .intro-mute:hover,
+.intro .intro-mute[aria-pressed="true"] {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.intro .intro-mute[data-hint] {
+    animation: intro-fade 0.5s ease-out both, intro-pulse 1.6s ease-in-out 0.6s 3;
+}
+
+.intro-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.intro-btn-primary .intro-icon path:first-child {
+    fill: currentColor;
+}
+
+@keyframes intro-rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes intro-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes intro-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 #2563eb00;
+    }
+    50% {
+        box-shadow: 0 0 0 6px #2563eb40;
+    }
+}

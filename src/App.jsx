@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { ThemeProvider } from './components/ThemeContext';
-import LoadingScreen from './components/LoadingScreen';
+import IntroLoader from './components/intro/IntroLoader';
 import Navbar from './sections/navbar/Navbar';
 import Home from './sections/home/Home';
 import About from './sections/about/About';
@@ -25,7 +25,7 @@ function App() {
         <Footer />
       </div>
       {isLoading && (
-        <LoadingScreen onReveal={handleReveal} onComplete={handleComplete} />
+        <IntroLoader onReveal={handleReveal} onComplete={handleComplete} />
       )}
     </ThemeProvider>
   );

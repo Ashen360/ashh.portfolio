@@ -62,13 +62,10 @@ body > * {
 /* App content reveal (after loading screen exits) */
 .app-content {
     opacity: 0;
-    transform: scale(1.02);
 }
 
 .app-content.revealed {
     opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
 /* Sections */
